@@ -257,7 +257,7 @@
     display:block; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:rgba(246,241,228,.6);
     margin-bottom:7px;
   }
-  .field input[type=text], .field input[type=tel], .field select, .field textarea{
+  .field input[type=text], .field input[type=tel], .field input[type=number], .field select, .field textarea{
     width:100%; background:rgba(246,241,228,.06); border:1px solid rgba(212,175,55,.35);
     color:var(--ivory); font-family:'Cormorant Garamond', serif; font-size:17px; padding:11px 12px;
     border-radius:1px; outline:none;
@@ -269,6 +269,27 @@
   .radio-opt{ display:flex; align-items:center; gap:8px; font-size:16px; color:rgba(246,241,228,.85); cursor:pointer; }
   .radio-opt input{ accent-color:var(--gold); width:16px; height:16px; }
   .err{ color:var(--wine-light); font-size:13px; margin-top:6px; display:none; }
+
+  .sub-fields{
+    display:none;
+    gap:16px; flex-wrap:wrap;
+    margin-top:14px; padding-top:14px;
+    border-top:1px dashed rgba(212,175,55,.3);
+  }
+  .sub-fields.show{ display:flex; }
+  .sub-fields .field{ flex:1; min-width:160px; margin-bottom:0; }
+
+  .event-block{
+    border:1px solid rgba(212,175,55,.3);
+    padding:22px 22px 20px;
+    margin-bottom:22px;
+    background:rgba(246,241,228,.03);
+  }
+  .event-block-title{
+    font-family:'Cinzel', serif; letter-spacing:.14em; text-transform:uppercase; font-size:14px;
+    color:var(--gold-light); margin:0 0 12px;
+  }
+
   .rsvp-submit{
     display:block; margin:26px auto 0; font-family:'Cinzel', serif; letter-spacing:.16em; text-transform:uppercase;
     font-size:14px; color:var(--navy-deep); background:linear-gradient(180deg, var(--gold-light), var(--gold));
@@ -397,36 +418,71 @@
     <h3>Confirmation de pr&eacute;sence</h3>
     <p class="sub">Merci de r&eacute;pondre avant le 25 Ao&ucirc;t 2026</p>
     <form id="rsvpForm">
-      <div class="field">
-        <label for="fullname">Nom &amp; pr&eacute;nom</label>
-        <input type="text" id="fullname" placeholder="Votre nom complet">
-        <span class="err" id="err-fullname">Merci d'indiquer votre nom.</span>
-      </div>
       <div class="field-row">
         <div class="field">
-          <label for="phone">T&eacute;l&eacute;phone</label>
-          <input type="tel" id="phone" placeholder="06 12 34 56 78">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" placeholder="Votre nom">
+          <span class="err" id="err-nom">Merci d'indiquer votre nom.</span>
         </div>
         <div class="field">
-          <label for="guests">Nombre de personnes</label>
-          <input type="text" id="guests" placeholder="Ex : 2">
-          <span class="err" id="err-guests">Merci d'indiquer un nombre.</span>
+          <label for="prenom">Pr&eacute;nom</label>
+          <input type="text" id="prenom" placeholder="Votre pr&eacute;nom">
+          <span class="err" id="err-prenom">Merci d'indiquer votre pr&eacute;nom.</span>
         </div>
       </div>
       <div class="field">
-        <label>Pr&eacute;sence Chabbat (5 Septembre)</label>
-        <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="chabbat" value="Oui" checked>Oui</label>
-          <label class="radio-opt"><input type="radio" name="chabbat" value="Non">Non</label>
+        <label for="phone">T&eacute;l&eacute;phone</label>
+        <input type="tel" id="phone" placeholder="06 12 34 56 78">
+      </div>
+
+      <!-- ===== CHABBAT ===== -->
+      <div class="event-block">
+        <p class="event-block-title">Chabbat &ndash; 5 Septembre</p>
+        <div class="field">
+          <label>Pr&eacute;sent(e) au Chabbat</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="chabbat" value="Oui" checked>Oui</label>
+            <label class="radio-opt"><input type="radio" name="chabbat" value="Non">Non</label>
+          </div>
+        </div>
+        <div class="sub-fields show" id="chabbat-sub-fields">
+          <div class="field">
+            <label for="chabbat-adultes">Nombre d'adultes</label>
+            <input type="number" id="chabbat-adultes" min="0" placeholder="0">
+            <span class="err" id="err-chabbat-adultes">Merci d'indiquer un nombre.</span>
+          </div>
+          <div class="field">
+            <label for="chabbat-enfants">Nombre d'enfants</label>
+            <input type="number" id="chabbat-enfants" min="0" placeholder="0">
+            <span class="err" id="err-chabbat-enfants">Merci d'indiquer un nombre.</span>
+          </div>
         </div>
       </div>
-      <div class="field">
-        <label>Pr&eacute;sence Soir&eacute;e (6 Septembre)</label>
-        <div class="radio-group">
-          <label class="radio-opt"><input type="radio" name="soiree" value="Oui" checked>Oui</label>
-          <label class="radio-opt"><input type="radio" name="soiree" value="Non">Non</label>
+
+      <!-- ===== SOIREE ===== -->
+      <div class="event-block">
+        <p class="event-block-title">Soir&eacute;e &ndash; 6 Septembre</p>
+        <div class="field">
+          <label>Pr&eacute;sent(e) &agrave; la Soir&eacute;e</label>
+          <div class="radio-group">
+            <label class="radio-opt"><input type="radio" name="soiree" value="Oui" checked>Oui</label>
+            <label class="radio-opt"><input type="radio" name="soiree" value="Non">Non</label>
+          </div>
+        </div>
+        <div class="sub-fields show" id="soiree-sub-fields">
+          <div class="field">
+            <label for="soiree-adultes">Nombre d'adultes</label>
+            <input type="number" id="soiree-adultes" min="0" placeholder="0">
+            <span class="err" id="err-soiree-adultes">Merci d'indiquer un nombre.</span>
+          </div>
+          <div class="field">
+            <label for="soiree-enfants">Nombre d'enfants</label>
+            <input type="number" id="soiree-enfants" min="0" placeholder="0">
+            <span class="err" id="err-soiree-enfants">Merci d'indiquer un nombre.</span>
+          </div>
         </div>
       </div>
+
       <div class="field">
         <label for="message">Message (optionnel)</label>
         <textarea id="message" rows="3" placeholder="Un mot pour la famille..."></textarea>
@@ -508,37 +564,81 @@
     }
   });
 
-  // ===== RSVP FORM =====
+  // ===== RSVP FORM : toggle logic Chabbat / Soir\u00e9e =====
+  const chabbatSubFields = document.getElementById('chabbat-sub-fields');
+  const soireeSubFields = document.getElementById('soiree-sub-fields');
+
+  function wireToggle(radioName, subFieldsEl){
+    document.querySelectorAll(`input[name="${radioName}"]`).forEach(radio => {
+      radio.addEventListener('change', () => {
+        if(radio.value === 'Oui' && radio.checked){
+          subFieldsEl.classList.add('show');
+        } else if(radio.value === 'Non' && radio.checked){
+          subFieldsEl.classList.remove('show');
+        }
+      });
+    });
+  }
+  wireToggle('chabbat', chabbatSubFields);
+  wireToggle('soiree', soireeSubFields);
+
+  // ===== RSVP FORM SUBMIT =====
   const form = document.getElementById('rsvpForm');
   const submitBtn = document.getElementById('rsvpSubmitBtn');
   const msgEl = document.getElementById('rsvpMsg');
+
+  function getCount(id){
+    const val = document.getElementById(id).value.trim();
+    if(val === '') return 0;
+    const n = Number(val);
+    return isNaN(n) || n < 0 ? null : n;
+  }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     let valid = true;
 
-    const fullname = document.getElementById('fullname').value.trim();
-    const guests = document.getElementById('guests').value.trim();
+    // reset errors
+    ['err-nom','err-prenom','err-chabbat-adultes','err-chabbat-enfants','err-soiree-adultes','err-soiree-enfants']
+      .forEach(id => { document.getElementById(id).style.display = 'none'; });
 
-    document.getElementById('err-fullname').style.display = 'none';
-    document.getElementById('err-guests').style.display = 'none';
+    const nom = document.getElementById('nom').value.trim();
+    const prenom = document.getElementById('prenom').value.trim();
 
-    if(!fullname){
-      document.getElementById('err-fullname').style.display = 'block';
-      valid = false;
+    if(!nom){ document.getElementById('err-nom').style.display = 'block'; valid = false; }
+    if(!prenom){ document.getElementById('err-prenom').style.display = 'block'; valid = false; }
+
+    const chabbatPresent = form.querySelector('input[name="chabbat"]:checked').value;
+    const soireePresent = form.querySelector('input[name="soiree"]:checked').value;
+
+    let chabbatAdultes = 0, chabbatEnfants = 0, soireeAdultes = 0, soireeEnfants = 0;
+
+    if(chabbatPresent === 'Oui'){
+      chabbatAdultes = getCount('chabbat-adultes');
+      chabbatEnfants = getCount('chabbat-enfants');
+      if(chabbatAdultes === null){ document.getElementById('err-chabbat-adultes').style.display = 'block'; valid = false; }
+      if(chabbatEnfants === null){ document.getElementById('err-chabbat-enfants').style.display = 'block'; valid = false; }
     }
-    if(!guests || isNaN(Number(guests)) || Number(guests) <= 0){
-      document.getElementById('err-guests').style.display = 'block';
-      valid = false;
+
+    if(soireePresent === 'Oui'){
+      soireeAdultes = getCount('soiree-adultes');
+      soireeEnfants = getCount('soiree-enfants');
+      if(soireeAdultes === null){ document.getElementById('err-soiree-adultes').style.display = 'block'; valid = false; }
+      if(soireeEnfants === null){ document.getElementById('err-soiree-enfants').style.display = 'block'; valid = false; }
     }
+
     if(!valid) return;
 
     const data = {
-      nom: fullname,
+      nom: nom,
+      prenom: prenom,
       telephone: document.getElementById('phone').value.trim(),
-      nombrePersonnes: guests,
-      chabbat: form.querySelector('input[name="chabbat"]:checked').value,
-      soiree: form.querySelector('input[name="soiree"]:checked').value,
+      chabbatPresent: chabbatPresent,
+      chabbatAdultes: chabbatAdultes,
+      chabbatEnfants: chabbatEnfants,
+      soireePresent: soireePresent,
+      soireeAdultes: soireeAdultes,
+      soireeEnfants: soireeEnfants,
       message: document.getElementById('message').value.trim(),
       date: new Date().toLocaleString('fr-FR')
     };
@@ -562,6 +662,8 @@
       msgEl.textContent = "Merci ! Votre r\u00e9ponse a bien \u00e9t\u00e9 enregistr\u00e9e.";
       msgEl.className = 'rsvp-msg ok';
       form.reset();
+      chabbatSubFields.classList.add('show');
+      soireeSubFields.classList.add('show');
       submitBtn.textContent = "Envoy\u00e9";
     })
     .catch(() => {
