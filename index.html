@@ -76,7 +76,7 @@
   .corner.bl{bottom:6px; left:6px; transform:scaleY(-1);}
   .corner.br{bottom:6px; right:6px; transform:scale(-1,-1);}
 
-  .magen-wrap{ width:200px; height:200px; margin-bottom:6px; filter:drop-shadow(0 0 18px rgba(212,175,55,.35)); }
+  .magen-wrap{ width:220px; height:220px; margin-bottom:6px; filter:drop-shadow(0 0 18px rgba(212,175,55,.35)); display:flex; align-items:center; justify-content:center; }
   .magen-wrap svg{width:100%;height:100%;}
   .star-line{
     fill:none; stroke:var(--gold); stroke-width:2.2;
@@ -88,6 +88,24 @@
   .star-dot{ fill:var(--gold-light); opacity:0; animation:fadeDot .8s ease forwards 2.4s; }
   @keyframes fadeDot{ to{opacity:1;} }
   .star-center{ opacity:0; animation:fadeDot 1s ease forwards 2.6s; }
+
+  .emblem-770{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    opacity:0; animation:fadeDot 1.4s ease forwards .5s;
+  }
+  .emblem-770 .num{
+    font-family:'Cinzel Decorative', serif;
+    font-weight:900;
+    font-size:76px;
+    line-height:1;
+    color:var(--gold-light);
+    text-shadow:0 0 24px rgba(212,175,55,.4);
+    letter-spacing:.02em;
+  }
+  .emblem-770 .emoji{
+    font-size:40px;
+    margin-top:6px;
+  }
 
   .eyebrow{
     font-family:'Cinzel', serif;
@@ -340,23 +358,12 @@
   <div class="corner br"><svg viewBox="0 0 46 46"><path d="M2 44 L2 14 Q2 2 14 2 L44 2" fill="none" stroke="#D4AF37" stroke-width="1.4"/><circle cx="2" cy="44" r="2.5" fill="#D4AF37"/></svg></div>
 
   <div class="magen-wrap">
-    <svg viewBox="0 0 200 200">
-      <polygon class="star-line tri1" points="100,20 174,155 26,155"/>
-      <polygon class="star-line tri2" points="100,180 26,45 174,45"/>
-      <circle class="star-dot" cx="100" cy="20" r="3.4"/>
-      <circle class="star-dot" cx="174" cy="155" r="3.4"/>
-      <circle class="star-dot" cx="26" cy="155" r="3.4"/>
-      <circle class="star-dot" cx="100" cy="180" r="3.4"/>
-      <circle class="star-dot" cx="26" cy="45" r="3.4"/>
-      <circle class="star-dot" cx="174" cy="45" r="3.4"/>
-      <circle class="star-center" cx="100" cy="100" r="5" fill="#F3DE9B"/>
-    </svg>
+    <img src="770-emblem.png" alt="770" style="width:100%;height:100%;object-fit:contain;">
   </div>
 
   <p class="eyebrow">Bar Mitsva</p>
   <h1 class="name-title">D'<em>Avraham Shalom<br>Mendel Tewel</em></h1>
   <p class="sub-date">5 &amp; 6 Septembre 2026</p>
-  <p class="sub-place">Chneor &middot; Aubervilliers</p>
 
   <div class="countdown" id="countdown">
     <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-label">jours</span></div>
