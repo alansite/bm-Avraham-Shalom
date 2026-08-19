@@ -460,7 +460,7 @@
     <p class="event-detail">17 Rue Clos B&eacute;nard, 93300 Aubervilliers</p>
     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=17+Rue+Clos+B%C3%A9nard+93300+Aubervilliers" target="_blank" rel="noopener">Voir l'itin&eacute;raire</a>
     <br>
-    <a class="save-date-btn" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Grande+Soir%C3%A9e+de+F%C3%AAte+-+Bar+Mitsva+Avraham+Shalom+Mendel&dates=20260906T173000Z/20260906T203000Z&details=Grande+Soir%C3%A9e+de+F%C3%AAte+pour+la+Bar+Mitsva+d%27Avraham+Shalom+Mendel+Tewel&location=Salons+Deux+Lumi%C3%A8res%2C+17+Rue+Clos+B%C3%A9nard%2C+93300+Aubervilliers" target="_blank" rel="noopener">Bloquez la date</a>
+    <button type="button" class="save-date-btn" id="saveDateBtn">Bloquez la date</button>
   </div>
 
   <div class="hosts">
@@ -639,6 +639,38 @@
       music.pause();
       soundToggle.textContent = '\u266A\u0338';
     }
+  });
+
+  // ===== BLOQUER LA DATE : g\u00e9n\u00e8re un fichier .ics (fonctionne sur iPhone/Apple Calendar, Android, Outlook...) =====
+  document.getElementById('saveDateBtn').addEventListener('click', () => {
+    const icsContent = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Bar Mitsva Avraham//FR',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:' + Date.now() + '@barmitsva-avraham',
+      'DTSTAMP:20260819T000000Z',
+      'DTSTART:20260906T173000Z',
+      'DTEND:20260906T203000Z',
+      'SUMMARY:Grande Soir\u00e9e de F\u00eate \u2013 Bar Mitsva Avraham Shalom Mendel',
+      'DESCRIPTION:Grande Soir\u00e9e de F\u00eate pour la Bar Mitsva d\u2019Avraham Shalom Mendel Tewel',
+      'LOCATION:Salons Deux Lumi\u00e8res\\, 17 Rue Clos B\u00e9nard\\, 93300 Aubervilliers',
+      'STATUS:CONFIRMED',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].join('\r\n');
+
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Bar-Mitsva-Avraham-Soiree.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 3000);
   });
 
   // ===== RSVP FORM : toggle logic Chabbat / Soir\u00e9e =====
