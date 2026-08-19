@@ -107,6 +107,23 @@
     margin-top:6px;
   }
 
+  .bh-top{
+    font-family:'Cinzel', serif;
+    font-size:20px;
+    letter-spacing:.08em;
+    color:var(--gold-light);
+    margin:0 0 18px;
+  }
+  .blessing-top{
+    font-family:'Cormorant Garamond', serif;
+    font-size:19px;
+    line-height:1.6;
+    color:var(--gold-pale);
+    max-width:420px;
+    margin:0 0 22px;
+    direction:rtl;
+  }
+
   .eyebrow{
     font-family:'Cinzel', serif;
     letter-spacing:.42em;
@@ -195,15 +212,20 @@
   #invitation.show{ opacity:1; transform:translateY(0); }
 
   .inv-intro{ text-align:center; margin-bottom:56px; }
-  .inv-star-mini{ width:46px; height:46px; margin:0 auto 22px; opacity:.85; }
-  .inv-star-mini svg{width:100%;height:100%;}
   .inv-lede{
     font-size:20px; line-height:1.7; color:rgba(246,241,228,.88);
     max-width:520px; margin:0 auto 6px;
   }
+  .inv-hebrew-tag{
+    font-family:'Cinzel', serif;
+    font-size:22px;
+    color:var(--gold-light);
+    margin:10px 0;
+    direction:rtl;
+  }
   .inv-name{
     font-family:'Marck Script', cursive;
-    font-size:44px; color:var(--gold-light); margin:14px 0 4px;
+    font-size:44px; color:var(--gold-light); margin:6px 0 4px;
   }
 
   .divider{
@@ -223,6 +245,36 @@
   .event-card::before{
     content:''; position:absolute; inset:8px; border:1px solid rgba(212,175,55,.22); pointer-events:none;
   }
+  .event-card.is-secondary{
+    padding:24px 22px;
+    border-color:rgba(212,175,55,.22);
+    background:linear-gradient(180deg, rgba(20,28,70,.28), rgba(11,18,51,.28));
+  }
+  .event-card.is-secondary .event-title{ font-size:clamp(18px,3vw,22px); margin-bottom:12px; }
+  .event-card.is-secondary .event-row{ font-size:15px; margin-bottom:6px; }
+  .event-card.is-secondary .event-tag{ font-size:11px; margin-bottom:10px; }
+  .event-card.is-secondary .event-detail{ font-size:14px; }
+  .event-card.is-primary{
+    padding:46px 34px;
+    border-color:var(--gold);
+    background:linear-gradient(180deg, rgba(20,28,70,.65), rgba(11,18,51,.65));
+    box-shadow:0 0 40px rgba(212,175,55,.18);
+  }
+  .event-card.is-primary .event-title{ font-size:clamp(26px,5vw,36px); }
+  .event-card.is-primary .event-row{ font-size:20px; }
+
+  .save-date-btn{
+    display:inline-block; margin-top:20px;
+    font-family:'Cinzel', serif; letter-spacing:.16em; text-transform:uppercase;
+    font-size:13px; color:var(--navy-deep);
+    background:linear-gradient(180deg, var(--gold-light), var(--gold));
+    padding:13px 30px; border-radius:1px;
+    box-shadow:0 8px 20px rgba(212,175,55,.3);
+    text-decoration:none;
+    border:none; cursor:pointer;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .save-date-btn:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(212,175,55,.42); }
   .event-tag{
     font-family:'Cinzel', serif; letter-spacing:.3em; font-size:12px; text-transform:uppercase;
     color:var(--gold); margin-bottom:14px;
@@ -320,7 +372,7 @@
   .rsvp-msg.ok{ color:#B7D7A8; display:block; }
   .rsvp-msg.bad{ color:var(--wine-light); display:block; }
 
-  .footer-star{ width:34px; height:34px; margin:56px auto 0; opacity:.6; }
+  .footer-star{ width:88px; height:88px; margin:60px auto 0; opacity:1; filter:drop-shadow(0 0 16px rgba(212,175,55,.45)); }
   .footer-star svg{ width:100%; height:100%; }
 
   .sound-toggle{
@@ -357,13 +409,16 @@
   <div class="corner bl"><svg viewBox="0 0 46 46"><path d="M2 44 L2 14 Q2 2 14 2 L44 2" fill="none" stroke="#D4AF37" stroke-width="1.4"/><circle cx="2" cy="44" r="2.5" fill="#D4AF37"/></svg></div>
   <div class="corner br"><svg viewBox="0 0 46 46"><path d="M2 44 L2 14 Q2 2 14 2 L44 2" fill="none" stroke="#D4AF37" stroke-width="1.4"/><circle cx="2" cy="44" r="2.5" fill="#D4AF37"/></svg></div>
 
+  <p class="bh-top">ב"ה</p>
+  <p class="blessing-top">וה' יתברך יצליחו להיות חסיד, ירא שמים ולמדן</p>
+
   <div class="magen-wrap">
     <img src="770-emblem.png" alt="770" style="width:100%;height:100%;object-fit:contain;">
   </div>
 
   <p class="eyebrow">Bar Mitsva</p>
   <h1 class="name-title">D'<em>Avraham Shalom<br>Mendel Tewel</em></h1>
-  <p class="sub-date">5 &amp; 6 Septembre 2026</p>
+  <p class="sub-date">Dimanche 6 Septembre 2026</p>
 
   <div class="countdown" id="countdown">
     <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-label">jours</span></div>
@@ -380,19 +435,15 @@
 <section id="invitation">
 
   <div class="inv-intro">
-    <div class="inv-star-mini">
-      <svg viewBox="0 0 100 100">
-        <polygon points="50,10 87,77.5 13,77.5" fill="none" stroke="#D4AF37" stroke-width="2.4"/>
-        <polygon points="50,90 13,22.5 87,22.5" fill="none" stroke="#D4AF37" stroke-width="2.4"/>
-      </svg>
-    </div>
     <p class="inv-lede">Avec une immense joie et beaucoup d'&eacute;motion,<br>nous vous invitons &agrave; c&eacute;l&eacute;brer la Bar Mitsva de notre fils</p>
+    <p class="inv-hebrew-tag">התמים</p>
     <p class="inv-name">Avraham Shalom Mendel</p>
+    <p class="inv-hebrew-tag">שיחי'</p>
   </div>
 
   <div class="divider"><span class="line"></span><span class="diamond"></span><span class="line"></span></div>
 
-  <div class="event-card">
+  <div class="event-card is-secondary">
     <p class="event-tag">Premier &eacute;v&eacute;nement</p>
     <h2 class="event-title">Chabbat Bar Mitsva</h2>
     <p class="event-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>Samedi 5 Septembre 2026</p>
@@ -400,7 +451,7 @@
     <p class="event-detail">Repas de Chabbat &amp; Seoudat Chlichit</p>
   </div>
 
-  <div class="event-card">
+  <div class="event-card is-primary">
     <p class="event-tag">Soir&eacute;e</p>
     <h2 class="event-title">Grande Soir&eacute;e de F&ecirc;te</h2>
     <p class="event-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>Dimanche 6 Septembre 2026</p>
@@ -408,14 +459,17 @@
     <p class="event-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.6"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>Salons Deux Lumi&egrave;res &ndash; Chneor</p>
     <p class="event-detail">17 Rue Clos B&eacute;nard, 93300 Aubervilliers</p>
     <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=17+Rue+Clos+B%C3%A9nard+93300+Aubervilliers" target="_blank" rel="noopener">Voir l'itin&eacute;raire</a>
+    <br>
+    <a class="save-date-btn" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Grande+Soir%C3%A9e+de+F%C3%AAte+-+Bar+Mitsva+Avraham+Shalom+Mendel&dates=20260906T173000Z/20260906T203000Z&details=Grande+Soir%C3%A9e+de+F%C3%AAte+pour+la+Bar+Mitsva+d%27Avraham+Shalom+Mendel+Tewel&location=Salons+Deux+Lumi%C3%A8res%2C+17+Rue+Clos+B%C3%A9nard%2C+93300+Aubervilliers" target="_blank" rel="noopener">Bloquez la date</a>
   </div>
 
   <div class="hosts">
     <p class="hosts-line">Vous convient avec bonheur</p>
-    <p class="hosts-names">Shmoulik &amp; Mouchka Tewel</p>
+    <p class="hosts-names">SHMOULIK &amp; MOUCHKA<br>TEWEL</p>
     <p class="grandparents">
       <b>Grands-parents</b><br>
-      Famille Nisilevitch &amp; Famille Tewel
+      Rav Eliezer et Rabbanit Haya NISILEVITCH<br>
+      Rav Pin'has et Rivka TEWEL
     </p>
   </div>
 
@@ -500,9 +554,25 @@
   </div>
 
   <div class="footer-star">
-    <svg viewBox="0 0 100 100">
-      <polygon points="50,10 87,77.5 13,77.5" fill="none" stroke="#D4AF37" stroke-width="2.2"/>
-      <polygon points="50,90 13,22.5 87,22.5" fill="none" stroke="#D4AF37" stroke-width="2.2"/>
+    <svg viewBox="0 0 120 120">
+      <defs>
+        <linearGradient id="footerStarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#FBF0CE"/>
+          <stop offset="45%" stop-color="#F3DE9B"/>
+          <stop offset="75%" stop-color="#D4AF37"/>
+          <stop offset="100%" stop-color="#A9791E"/>
+        </linearGradient>
+      </defs>
+      <circle cx="60" cy="60" r="57" fill="none" stroke="url(#footerStarGrad)" stroke-width="1" opacity=".55"/>
+      <polygon points="60,10 103,87 17,87" fill="none" stroke="url(#footerStarGrad)" stroke-width="3.4" stroke-linejoin="round"/>
+      <polygon points="60,110 17,33 103,33" fill="none" stroke="url(#footerStarGrad)" stroke-width="3.4" stroke-linejoin="round"/>
+      <circle cx="60" cy="10" r="3.6" fill="url(#footerStarGrad)"/>
+      <circle cx="103" cy="87" r="3.6" fill="url(#footerStarGrad)"/>
+      <circle cx="17" cy="87" r="3.6" fill="url(#footerStarGrad)"/>
+      <circle cx="60" cy="110" r="3.6" fill="url(#footerStarGrad)"/>
+      <circle cx="17" cy="33" r="3.6" fill="url(#footerStarGrad)"/>
+      <circle cx="103" cy="33" r="3.6" fill="url(#footerStarGrad)"/>
+      <circle cx="60" cy="60" r="5" fill="url(#footerStarGrad)"/>
     </svg>
   </div>
 
