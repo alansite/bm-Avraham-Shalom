@@ -76,8 +76,20 @@
   .corner.bl{bottom:6px; left:6px; transform:scaleY(-1);}
   .corner.br{bottom:6px; right:6px; transform:scale(-1,-1);}
 
-  .magen-wrap{ width:220px; height:220px; margin-bottom:6px; filter:drop-shadow(0 0 18px rgba(212,175,55,.35)); display:flex; align-items:center; justify-content:center; }
+  .magen-wrap{ width:130px; height:130px; margin-bottom:4px; filter:drop-shadow(0 0 14px rgba(212,175,55,.35)); display:flex; align-items:center; justify-content:center; }
   .magen-wrap svg{width:100%;height:100%;}
+
+  .brand-logo-tl{
+    position:absolute; top:22px; left:22px; z-index:3;
+    width:104px; height:auto;
+    opacity:.96;
+    filter:drop-shadow(0 2px 10px rgba(212,175,55,.35));
+    transition:opacity .3s ease;
+  }
+  .brand-logo-tl img{ width:100%; height:auto; display:block; }
+  @media (max-width:480px){
+    .brand-logo-tl{ width:72px; top:16px; left:16px; }
+  }
   .star-line{
     fill:none; stroke:var(--gold); stroke-width:2.2;
     stroke-dasharray:400; stroke-dashoffset:400;
@@ -409,6 +421,8 @@
   <div class="corner bl"><svg viewBox="0 0 46 46"><path d="M2 44 L2 14 Q2 2 14 2 L44 2" fill="none" stroke="#D4AF37" stroke-width="1.4"/><circle cx="2" cy="44" r="2.5" fill="#D4AF37"/></svg></div>
   <div class="corner br"><svg viewBox="0 0 46 46"><path d="M2 44 L2 14 Q2 2 14 2 L44 2" fill="none" stroke="#D4AF37" stroke-width="1.4"/><circle cx="2" cy="44" r="2.5" fill="#D4AF37"/></svg></div>
 
+  <div class="brand-logo-tl"><img src="logo-avraham.jpg" alt="Avraham Shalom Mendel Tewel"></div>
+
   <p class="bh-top">ב"ה</p>
   <p class="blessing-top">וה' יתברך יצליחו להיות חסיד, ירא שמים ולמדן</p>
 
@@ -446,9 +460,9 @@
   <div class="event-card is-secondary">
     <p class="event-tag">Premier &eacute;v&eacute;nement</p>
     <h2 class="event-title">Chabbat Bar Mitsva</h2>
-    <p class="event-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>Samedi 5 Septembre 2026</p>
+    <p class="event-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.6"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg></span>Samedi 29 Ao&ucirc;t 2026</p>
     <p class="event-row"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.6"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span>&Agrave; Chneor</p>
-    <p class="event-detail">Repas de Chabbat &amp; Seoudat Chlichit</p>
+    <p class="event-detail">Parachat Kitavo &ndash; Repas de Chabbat &amp; Seoudat Chlichit</p>
   </div>
 
   <div class="event-card is-primary">
@@ -498,7 +512,7 @@
 
       <!-- ===== CHABBAT ===== -->
       <div class="event-block">
-        <p class="event-block-title">Chabbat &ndash; 5 Septembre</p>
+        <p class="event-block-title">Chabbat &ndash; 29 Ao&ucirc;t</p>
         <div class="field">
           <label>Pr&eacute;sent(e) au Chabbat</label>
           <div class="radio-group">
